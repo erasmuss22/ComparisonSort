@@ -1,0 +1,218 @@
+/***********************************************************************
+File:             Questions.txt
+
+Author:           Erin Rasmussen  ejrasmussen2@wisc.edu
+
+Completion Date:  April 23, 2011
+
+Course:           CS 367, Spring 2011, Lecture 2
+***********************************************************************/
+
+Directions: answer the following five (5) questions.
+
+****Note****: All tests were performed on the mumble server connected 
+remotely to using VirtualBox.
+
+
+
+1) Each sort algorithm is supposed to put the elements of the input
+array into ascending order.  How did you test your code to determine
+if it did this?
+
+Answer: The algorithm selectionSort had its final array copied into another
+array, and all other algorithms had their final arrays copied and compared
+to the result from selectionSort. SelectionSort was used because the code
+was taken from the online readings and is correct. A print statement was used to show the
+positions that were in error. testA was initialized similar to the first for loop,
+and both testA and testB were class variables.
+
+    	testB = new SortObject[A.length];
+    	for (int i = 0; i < A.length; i++){
+    		testB[i] = (SortObject) A[i];
+    	}
+    	for (int i = 0; i < testB.length; i++){
+    		if (testB[i] != testA[i]){
+    			System.out.println("Wrong! " + i);
+    		}
+    	}
+
+
+2) In this question you will run TestSort four times using the
+parameters indicated in the table:
+
+    run 1: 20 43210
+    run 2: 200 43210
+    run 3: 2000 43210
+    run 4: 20000 43210
+
+What are the sort statistics for each of the runs?
+
+Answer:
+---20, 43210
+selection				190 compares	60 moves	0ms
+insertion				93 compares	   115 moves	0ms
+merge					60 compares	   176 moves	0ms
+quick(median of three)	107 compares	81 moves	0ms
+quick(first)			77 compares		90 moves	0ms
+heap					122 compares   220 moves	0ms
+2-way					165 compares	59 moves	0ms
+
+---200, 43210
+selection				19,900 compares	   600 moves	4ms
+insertion				10,490 compares	10,696 moves	1ms
+merge					 1,275 compares	 3,088 moves	0ms
+quick(median of three)	 1,728 compares	 1,365 moves	0ms
+quick(first)			 1,648 compares	 1,350 moves	0ms
+heap					 2,511 compares	 4,147 moves	1ms
+2-way					15,150 compares	   599 moves	1ms
+
+---2000, 43210
+selection				1,999,000 compares	    6,000 moves	16ms
+insertion				1,011,794 compares	1,013,800 moves 16ms
+merge					   19,443 compares	   43,904 moves	 5ms
+quick(median of three)	   25,205 compares	   18,555 moves	 3ms
+quick(first)			   25,567 compares	   17,694 moves	 2ms
+heap					   38,349 compares	   61,297 moves	 8ms
+2-way					1,501,500 compares	    6,000 moves	81ms
+
+---20000, 43210
+selection				199,990,000 compares	     60,000 moves	866ms
+insertion				100,572,233 compares	100,592,240 moves	423ms
+merge					    260,845 compares		574,464 moves	108ms
+quick(median of three)		328,443 compares		232,824 moves	 23ms
+quick(first)				366,720 compares		221,499 moves	 65ms
+heap						518,424 compares	    816,619 moves	119ms
+2-way					150,015,000 compares	     59,999 moves	848ms
+
+3) In this question you again will run TestSort four times using the
+parameters indicated in the table:
+
+    run 5: 1500 12321
+    run 6: 1500 12321
+    run 7: 1500 12321
+    run 8: 1500 12321
+
+What are the sort statistics for each of the runs?
+
+Answer:
+
+selection				1,124,250 compares	   4,500 moves	11ms 12ms 13ms 11ms
+insertion				  564,223 compares	 565,729 moves	15ms 14ms 14ms 15ms
+merge					   13,953 compares	  31,904 moves	 3ms  2ms  2ms  3ms
+quick(median of three)	   18,330 compares	  13,497 moves	 2ms  2ms  2ms  2ms
+quick(first)			   19,654 compares	  12,867 moves	 2ms  2ms  2ms  2ms
+heap					   27,766 compares	  44,634 moves	 6ms  5ms  5ms  5ms
+2-way					  844,875 compares	   4,499 moves	62ms 63ms 62ms 63ms
+
+All data moves and compares were the same, just different times.
+
+
+4) In this question you will run TestSort three times using the
+parameters indicated in the table:
+
+    run  9: 6000 53706
+    run 10: 6000 53706
+    run 11: 6000 53706
+
+- For run 9 you will use the TestSort program as originally written.
+
+- For run 10 you will modify the TestSort program so that instead of
+  creating an input array of random integers, it creates an input
+  array that is already in ascending order.  The easiest way to do
+  this is to replace the line:
+
+      arr[k] = new SortObject(random.nextInt());
+
+  with the line:
+
+      arr[k] = new SortObject(k);
+
+- For run 11 you will modify the TestSort program so that it creates
+  an input array that is already in descending order. The easiest way
+  to do this is to replace the line:
+
+      arr[k] = new SortObject(random.nextInt());
+
+  with the line:
+
+      arr[k] = new SortObject(arrSize - k);
+
+What are the sort statistics for each of the runs?
+
+Answer:
+Run 9
+selection				17,997,000 compares	   18,000 moves	 82ms
+insertion				 9,086,414 compares	9,092,423 moves	 47ms
+merge					    67,831 compares	  151,616 moves	 29ms
+quick(median of three)	    88,084 compares	   62,067 moves	 11ms
+quick(first)			    92,206 compares	   59,778 moves	 16ms
+heap					   134,833 compares	  213,864 moves	 34ms
+2-way					13,504,500 compares	   17,999 moves	108ms
+
+Run 10
+selection				17,997,000 compares	   18,000 moves	76ms
+insertion				     5,999 compares	   11,998 moves	 0ms
+merge					    39,152 compares	  151,616 moves	21ms
+quick(median of three)	    74,202 compares	   12,282 moves	 7ms
+quick(first)			18,008,998 compares	   18,000 moves	63ms
+heap					   182,467 compares	  376,935 moves	21ms
+2-way					13,504,500 compares	   18,000 moves	69ms
+
+
+Run 11
+selection				17,997,000 compares	    18,000 moves	76ms
+insertion				17,997,000 compares	18,008,998 moves   141ms
+merge					    36,656 compares	   151,616 moves	21ms
+quick(median of three)	   110,484 compares	    39,174 moves	11ms
+quick(first)			18,005,998 compares	    26,997 moves	72ms
+heap					   126,920 compares	   190,797 moves	22ms
+2-way					13,504,500 compares	    15,000 moves	66ms
+
+
+5) Briefly analyze your results from questions 2, 3, and 4.  Your
+analysis should consider the following:
+
+    - Are your results are consistent with the complexities of the
+      sorting algorithms (as derived in class)?
+
+    - How does the size of the input array affect a sort's performance
+      relative to other sorts?
+
+    - How does the order of values in the input array (runs 9-11) affect
+      a sort's performance relative to other sorts?
+
+    - Which of the statistics (compares, data moves, time) provides
+      the most useful information for determining the efficiency of a
+      sort?
+
+You should back up your analysis with examples and specific references
+to your results.
+
+Answer: The complexities are consistent with those from class as the best case
+and worst case complexities. For selectionSort, there are about (N^2)/2 comparisons
+for a complexity of O(N^2), consistent for best and worst case complexities. For
+insertionSort, the best case complexity of 5,999 data compares is consistent with
+O(N) and ~18 million compares for worst case is consistent with O(N^2). MergeSort has
+roughly 40,000 compares for ascending and descending which is approximately NlogN and
+consistent with its complexity of O(NlogN). It is hard to determine if quickSort is
+consistent because it is hard to determine if there was a good partition or not.
+	Increasing the size of an array causes the sort to take longer, use more compares,
+and use more moves as well.  In runs 1-4, as the array is multiplied by 10, data compares
+are multiplied by about 15-100 depending on the sort. Data moves are also multiplied by
+a common factor for each sort as the array increases. For example, as the array is 
+multiplied by 10, selectionSort and 2-way selectSort are also multiplied by 10 in the
+amount of moves performed.
+	With the exception of selectionSort and 2-way selectSort, order changes the performance
+of the different sorts. Some sorts, for example insertionSort and quickSort median of 3, 
+require fewer moves and compares when the array is already in ascending order. Other sorts 
+such as heapSort and mergeSort require fewer compares and  moves (merge is equal) when the 
+array is in descending order. QuickSortFirst uses fewer compares and moves when the array
+is in random order and many more when the arrays are sorted in either ascending or descending
+order.
+	The amount of data moves a sort makes best determines how efficient it is.  If an array
+of size N requires many more than N data moves, it shows that the sorting algorithm puts the
+data in the wrong spot multiple times before obtaining a sorted array. SelectionSort and 2-way
+selectSort demonstrate in run 4 that an array of size 20,000 can be sorted in 60,000 moves. Other
+sorts use multiple hundreds of thousands and insertionSort even uses 100,592,240! Time doesn't matter
+because an array of 20,000 can be sorted in a fraction of a second.  Data compares show some
+efficiency, but do not change the state of memory like a data move does.
